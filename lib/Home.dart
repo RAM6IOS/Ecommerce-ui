@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 }
 class _Home extends State<Home> {
    int selectedIndex = 0;
+   int _selectedIndex = -1; 
    final List<Widget> _pages = [
     // تستطيع استبدال هذه الصفحات بالصفحات الخاصة بك
     Center(child: Text('الصفحة الرئيسية')),
@@ -65,11 +66,65 @@ class _Home extends State<Home> {
           
 
           )
-          
 
       ),
       
-      body: _pages[selectedIndex],
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 15 ,top: 20 ,bottom: 5),
+            alignment: Alignment.centerLeft,
+          child:Text("Gatgory" ,style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold
+          ), ),
+          ),
+          Container(
+  height: 150, // ارتفاع محدد
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                 return GestureDetector(
+        onTap: () {
+                setState(() {
+                  _selectedIndex = index; // تحديث العنصر المحدد
+                });
+              },
+              child:Container(
+        width: 100,
+       // height: 40,
+        margin: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _selectedIndex == index ? Color.fromARGB(255, 233, 148, 79): Colors.grey[200],
+        
+          boxShadow: [
+            BoxShadow(
+              color: _selectedIndex == index ? Color.fromARGB(255, 218, 115, 31):Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            'عنصر $index',
+            style: TextStyle(color:  Colors.black, // تغيير لون النص بناءً على العنصر المحدد
+),
+          ),
+        ),
+              )
+      );
+
+              },
+    
+  ),
+          )
+        ]
+),
+
        bottomNavigationBar: BottomNavigationBar(
        
         currentIndex: selectedIndex,
