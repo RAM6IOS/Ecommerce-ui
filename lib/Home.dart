@@ -121,7 +121,54 @@ class _Home extends State<Home> {
               },
     
   ),
-          )
+          ),
+           Container(
+            margin: EdgeInsets.only(left: 15 ,top: 15 ,bottom: 10),
+            alignment: Alignment.centerLeft,
+          child:Text("Best Seling" ,style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold
+          ), ),
+          ),
+      Container( 
+        height:300,   
+         width: 200,
+child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Container(
+             // width: 50,
+              height: 300, // Set a fixed width for the GridView
+              child: GridView.builder(
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 15,
+                ),
+                //itemCount: 20,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                   
+                   
+                    margin: EdgeInsets.all(10),
+                    child: Container(
+                     // width: 50,
+                      //height: 50,
+                      color: Colors.blue,
+                      child: Center(
+                        child: Text(
+                          'منتج $index',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ), 
+      )         
         ]
 ),
 
