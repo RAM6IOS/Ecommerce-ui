@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
+import 'Tst1.dart';
+import 'Test2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Gatgorys4(),
     );
   }
 }

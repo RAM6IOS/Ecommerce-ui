@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'Gatgory.dart';
 
 
 
@@ -11,6 +12,9 @@ class Home extends StatefulWidget {
    
    @override 
     State <Home> createState() => _Home();
+    // State <Home> createState() => _Gatgory();
+
+      
 
 
 }
@@ -23,14 +27,12 @@ class _Home extends State<Home> {
     Center(child: Text('التسوق')),
     Center(child: Text('المستخدم')),
   ];
+   final List<String> entries = <String>['sneakers.png', 'heels.png', 'clothes.png' , 'gift-box.png' ,'smartphone.png'];
 
   @override
   // TODO: implement widget
   Widget build(BuildContext context){
-     
 
-      
-      
     return Scaffold(
       appBar: AppBar(
         
@@ -53,7 +55,6 @@ class _Home extends State<Home> {
             ),
           )),
           actions: [
-
             IconButton(
               padding:EdgeInsets.only(right: 20),
             icon: Icon(Icons.menu),
@@ -61,15 +62,11 @@ class _Home extends State<Home> {
               // الاستماع للضغط على الزر الأيسر
             },
           ),
-
           ],
-          
-
           )
-
-      ),
-      
-      body: Column(
+      ),  
+      body: ListView(
+        // scrollDirection: Axis.vertical,
         children: [
           Container(
             margin: EdgeInsets.only(left: 15 ,top: 20 ,bottom: 5),
@@ -79,49 +76,7 @@ class _Home extends State<Home> {
             fontWeight: FontWeight.bold
           ), ),
           ),
-          Container(
-  height: 150, // ارتفاع محدد
-  child: ListView.builder(
-    scrollDirection: Axis.horizontal,
-    itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                 return GestureDetector(
-        onTap: () {
-                setState(() {
-                  _selectedIndex = index; // تحديث العنصر المحدد
-                });
-              },
-              child:Container(
-        width: 100,
-       // height: 40,
-        margin: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: _selectedIndex == index ? Color.fromARGB(255, 233, 148, 79): Colors.grey[200],
-        
-          boxShadow: [
-            BoxShadow(
-              color: _selectedIndex == index ? Color.fromARGB(255, 218, 115, 31):Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            'عنصر $index',
-            style: TextStyle(color:  Colors.black, // تغيير لون النص بناءً على العنصر المحدد
-),
-          ),
-        ),
-              )
-      );
-
-              },
-    
-  ),
-          ),
+         Gatgorys2(),
            Container(
             margin: EdgeInsets.only(left: 15 ,top: 15 ,bottom: 10),
             alignment: Alignment.centerLeft,
@@ -131,25 +86,23 @@ class _Home extends State<Home> {
           ), ),
           ),
       Container( 
-        height:300,   
+        height:700,   
          width: 200,
 child: ListView(
-          scrollDirection: Axis.vertical,
+         // scrollDirection: Axis.vertical,
           children: [
             Container(
-             // width: 50,
-              height: 300, // Set a fixed width for the GridView
+              width: 200,
+              height: 400, // Set a fixed width for the GridView
               child: GridView.builder(
-                scrollDirection: Axis.vertical,
+                //scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 15,
+                  crossAxisSpacing: 10,
                 ),
-                //itemCount: 20,
+                itemCount: 6,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                   
-                   
                     margin: EdgeInsets.all(10),
                     child: Container(
                      // width: 50,
