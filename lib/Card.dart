@@ -12,12 +12,7 @@ class Cards extends StatefulWidget {
 }
 
 class _Card extends State<Cards> {
-     final List<String> entries = <String>['sneakers.png', 'heels.png', 'clothes.png' , 'gift-box.png' ,'smartphone.png'];
-     int _selectedIndex = -1; 
-      int selectedIndex = 0;
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     return  Card(
@@ -29,7 +24,6 @@ class _Card extends State<Cards> {
   )
     },
                child: Container(
-               
                  height: 300, 
 
                  width: 170,

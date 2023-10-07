@@ -1,22 +1,14 @@
 
-
 import 'package:flutter/material.dart';
 import 'Gatgory.dart';
-
-
+import 'CardSeling.dart';
 
 class Home extends StatefulWidget {
   
   const Home({ super.key });
- 
-   
    @override 
     State <Home> createState() => _Home();
     // State <Home> createState() => _Gatgory();
-
-      
-
-
 }
 class _Home extends State<Home> {
    int selectedIndex = 0;
@@ -65,10 +57,9 @@ class _Home extends State<Home> {
           ],
           )
       ),  
-      body: ListView(
-        // scrollDirection: Axis.vertical,
-        children: [
-          Container(
+    body: ListView(
+        children:[
+           Container(
             margin: EdgeInsets.only(left: 15 ,top: 20 ,bottom: 5),
             alignment: Alignment.centerLeft,
           child:Text("Gatgory" ,style: TextStyle(
@@ -76,8 +67,8 @@ class _Home extends State<Home> {
             fontWeight: FontWeight.bold
           ), ),
           ),
-         Gatgorys2(),
-           Container(
+           Gatgorys2(),
+               Container(
             margin: EdgeInsets.only(left: 15 ,top: 15 ,bottom: 10),
             alignment: Alignment.centerLeft,
           child:Text("Best Seling" ,style: TextStyle(
@@ -85,65 +76,22 @@ class _Home extends State<Home> {
             fontWeight: FontWeight.bold
           ), ),
           ),
-      Container( 
-        height:700,   
-         width: 200,
-child: ListView(
-         // scrollDirection: Axis.vertical,
-          children: [
-            Container(
-              width: 200,
-              height: 400, // Set a fixed width for the GridView
-              child: GridView.builder(
-                //scrollDirection: Axis.vertical,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                ),
-                itemCount: 6,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.all(10),
-                    child: Container(
-                     // width: 50,
-                      //height: 50,
-                      color: Colors.blue,
-                      child: Center(
-                        child: Text(
-                          'منتج $index',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ), 
-      )         
-        ]
-),
-
-       bottomNavigationBar: BottomNavigationBar(
-       
+       CardSeling()
+        ]),
+       bottomNavigationBar: BottomNavigationBar( 
         currentIndex: selectedIndex,
          onTap: ( vla) {
               setState(() {
                 selectedIndex = vla;
               });
             },
-        //selectedItemColor: Colors.amber[800],
         unselectedItemColor: Colors.black,
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
-
-
         items:  const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'الصفحة الرئيسية',
             ),
-
         BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag),
               label: 'التسوق',
@@ -151,9 +99,6 @@ child: ListView(
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'المستخدم',
-             
-
-            
             ),
 
         ]

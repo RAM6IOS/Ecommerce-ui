@@ -13,9 +13,6 @@ class CardSeling extends StatefulWidget {
 
 class _CardSeling extends State<CardSeling> {
      
-
-
-
   @override
   Widget build(BuildContext context) {
     return         ListView.builder(
