@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+
 import 'Home.dart';
 
 class Details extends StatefulWidget {
@@ -15,6 +18,11 @@ class _Details extends State<Details> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> images = [
+  'images/iPhone14.jpg',
+  //'assets/image2.jpg',
+  //'assets/image3.jpg',
+];
     return Scaffold(
       appBar: AppBar(
         
@@ -23,10 +31,36 @@ class _Details extends State<Details> {
       alignment: Alignment.center,
      child:Column(
       children: [
-        Expanded(child: Image.asset( "images/iPhone14.jpg",
-        fit: BoxFit.fill,
-                        width: double.infinity, 
-        ),),
+        Expanded(
+          child:CarouselSlider(
+  items: images.map((image) {
+    return Builder(
+      builder: (BuildContext context) {
+        return Container(
+          width: MediaQuery.of(context).size.width,
+         // margin: EdgeInsets.symmetric(horizontal: 5.0),
+          decoration: BoxDecoration(
+            color: Colors.amber,
+          ),
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+        );
+      },
+    );
+  }).toList(),
+  options: CarouselOptions(
+    height: 400.0,
+    enlargeCenterPage: true,
+    //autoPlay: false,
+    //autoPlayInterval: Duration(seconds: 2),
+    //autoPlayAnimationDuration: Duration(milliseconds: 800),
+    //autoPlayCurve: Curves.fastOutSlowIn,
+  ),
+) ,
+),
+
          Expanded(child: Column(
            mainAxisAlignment : MainAxisAlignment.spaceAround,
           children: [
