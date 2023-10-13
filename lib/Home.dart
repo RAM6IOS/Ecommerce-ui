@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'Gatgory.dart';
 import 'CardSeling.dart';
+import 'Card.dart';
 
 class Home extends StatefulWidget {
   
@@ -24,13 +25,10 @@ class _Home extends State<Home> {
   @override
   // TODO: implement widget
   Widget build(BuildContext context){
-
     return Scaffold(
       appBar: AppBar(
-        
           bottom: AppBar(
             title: Container(
-
               padding: EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               color: Colors.grey[200], // لون الخلفية
@@ -63,7 +61,7 @@ class _Home extends State<Home> {
             margin: EdgeInsets.only(left: 15 ,top: 20 ,bottom: 5),
             alignment: Alignment.centerLeft,
           child:Text("Gatgory" ,style: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: FontWeight.bold
           ), ),
           ),
@@ -72,11 +70,12 @@ class _Home extends State<Home> {
             margin: EdgeInsets.only(left: 15 ,top: 15 ,bottom: 10),
             alignment: Alignment.centerLeft,
           child:Text("Best Seling" ,style: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             fontWeight: FontWeight.bold
           ), ),
           ),
        CardSeling()
+      
         ]),
        bottomNavigationBar: BottomNavigationBar( 
         currentIndex: selectedIndex,
@@ -86,7 +85,9 @@ class _Home extends State<Home> {
               });
             },
         unselectedItemColor: Colors.black,
+        selectedItemColor: Color.fromARGB(255, 233, 148, 79),
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.green),
+          iconSize: 40,
         items:  const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.home),

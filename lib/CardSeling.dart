@@ -15,17 +15,16 @@ class _CardSeling extends State<CardSeling> {
      
   @override
   Widget build(BuildContext context) {
-    return         ListView.builder(
-       physics: const NeverScrollableScrollPhysics(),
-       shrinkWrap: true,
-
+    return         GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2 ,mainAxisExtent: 250 ,crossAxisSpacing: 10 ),
         itemCount: 5,
          itemBuilder: (context, index) {
        return Row(
         mainAxisAlignment : MainAxisAlignment.spaceAround,
         children:[
       Cards(),
-      Cards()
         ]
        );
          }

@@ -4,8 +4,6 @@ import 'details.dart';
 
 class Cards extends StatefulWidget {
   const Cards({ super.key });
- 
-   
    @override 
     State <Cards> createState() => _Card();
 
@@ -29,11 +27,14 @@ class _Card extends State<Cards> {
                  width: 170,
                   child: Column(
                     children: <Widget>[
-                      Image.asset(
-                        "images/iPhone14.jpg",
+                      Container(
+                        color: Colors.grey.withOpacity(0.60),
+                     child: Image.asset(
+                        "images/iPhone13.png",
                        fit: BoxFit.fill,
                         width: double.infinity, 
-                        height: 200,
+                        height: 140,
+                      ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(8.0),
@@ -57,18 +58,13 @@ class _Card extends State<Cards> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Text(
-                                  'كلمة بيع',
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
                                   '\$20.00',
                                   style: TextStyle(
+                                    color:  Color.fromARGB(255, 233, 148, 79),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
+                                
                               ],
                             ),
                           ],

@@ -43,8 +43,8 @@ class _Gatgorys2 extends State<Gatgorys2> {
           boxShadow: [
             BoxShadow(
               color: _selectedIndex == index ? Color.fromARGB(255, 218, 115, 31):Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 5,
+             spreadRadius: 2,
+             blurRadius: 5,
               offset: Offset(0, 3),
             ),
           ],
