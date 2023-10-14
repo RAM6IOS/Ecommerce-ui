@@ -5,8 +5,10 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'Home.dart';
 
 class Details extends StatefulWidget {
-  const Details({ super.key });
- 
+  final String myVariable;
+  //const Details({ super.key  , required this.myVariable});
+   const Details({required this.myVariable, Key? key}) : super(key: key);
+
    
    @override 
     State <Details> createState() => _Details();
@@ -15,14 +17,16 @@ class Details extends StatefulWidget {
 
 class _Details extends State<Details> {
   
+  
 
   @override
   Widget build(BuildContext context) {
     List<String> images = [
-  'images/iPhone14.jpg',
+  'images/iPhone13.png',
   //'assets/image2.jpg',
   //'assets/image3.jpg',
 ];
+
     return Scaffold(
       appBar: AppBar(
         
@@ -38,9 +42,8 @@ class _Details extends State<Details> {
       builder: (BuildContext context) {
         return Container(
           width: MediaQuery.of(context).size.width,
-         // margin: EdgeInsets.symmetric(horizontal: 5.0),
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: const Color.fromARGB(255, 224, 221, 213),
           ),
           child: Image.asset(
             image,
@@ -53,21 +56,18 @@ class _Details extends State<Details> {
   options: CarouselOptions(
     height: 400.0,
     enlargeCenterPage: true,
-    //autoPlay: false,
-    //autoPlayInterval: Duration(seconds: 2),
-    //autoPlayAnimationDuration: Duration(milliseconds: 800),
-    //autoPlayCurve: Curves.fastOutSlowIn,
   ),
 ) ,
 ),
-
          Expanded(child: Column(
            mainAxisAlignment : MainAxisAlignment.spaceAround,
           children: [
-          Text("iPone 14 max pro",style: TextStyle(
+           // SizedBox(height: 20,),
+          Text(widget.myVariable ?? "Default Value",style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25
           ),),
+          //SizedBox(height: 40),
           Text("apple Elctrencia",style: TextStyle(
             fontSize: 15,
             color: Colors.grey
@@ -79,42 +79,40 @@ class _Details extends State<Details> {
             fontWeight: FontWeight.bold
           ),),
           Align(
-  //alignment: Alignment.center,
-  
           child:
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             
             
             children: [
-               Spacer(),
-              Text("Colors:"),
-             Spacer(),
+             
+              Text("Colors:" ,style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),),
+              SizedBox(width: 20),
               Text("Gry"),
-             Spacer(),
+             SizedBox(width: 20),
               Text("Black"),
-               Spacer()
-
+               
             ],
           )
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            
-            
+            mainAxisAlignment: MainAxisAlignment.center,  
             children: [
-               Spacer(),
-              Text("Size:"),
-             Spacer(),
+              
+              Text("Size:",style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),),
+             SizedBox(width: 15),
               Text("38"),
-               Spacer(),
+              SizedBox(width: 15),
                Text("39"),
-             Spacer(),
+             SizedBox(width: 15),
               Text("40"),
-               Spacer(),
+                SizedBox(width: 15),
               Text("41"),
-               Spacer()
-
+              
             ],
           ),
           MaterialButton(
@@ -126,9 +124,7 @@ class _Details extends State<Details> {
               fontSize: 20,
               fontWeight: FontWeight.bold
             ),), )
-
          ],),),
-
       ],))
     );
   }

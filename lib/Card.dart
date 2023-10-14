@@ -3,6 +3,7 @@ import 'Home.dart';
 import 'details.dart';
 
 class Cards extends StatefulWidget {
+  
   const Cards({ super.key });
    @override 
     State <Cards> createState() => _Card();
@@ -18,7 +19,7 @@ class _Card extends State<Cards> {
         onTap: () => {
      Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Details()),
+    MaterialPageRoute(builder: (context) => const Details(myVariable:  "myVariable" )),
   )
     },
                child: Container(

@@ -55,7 +55,7 @@ class _Gatgorys3 extends State<Gatgorys3> {
                   child: Column(
                     children: <Widget>[
                       Image.asset(
-                        "images/iPhone14.jpg",
+                        "images/iPhone13.png",
                        fit: BoxFit.fill,
                         width: double.infinity, 
                         height: 80,
