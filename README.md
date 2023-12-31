@@ -1,6 +1,6 @@
 # ecommerce
 
-A new Flutter project.
+An application for selling various types of car spare parts
 
 ## Getting Started
 
