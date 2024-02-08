@@ -23,9 +23,9 @@ const NewPassword({ Key? key }) : super(key: key);
           children: [
          const   CustomTitle(titel1: ' Preview for Password', titel2: 'Please Enter new Password',),
            const  SizedBox(height: 100,),
-             CustomTextField(hintText: 'enter your Password', labelText: "New Password",icon:Icons.lock ,mycontrller: controler.newpassword,),
+             CustomTextField(hintText: 'enter your Password', labelText: "New Password",icon:Icons.lock ,mycontrller: controler.newpassword,isPhone: false,),
             const SizedBox(height: 50,),
-            CustomTextField(hintText: 'confirm new password', labelText: "Confirm Password",icon:Icons.lock ,mycontrller: controler.resitpassword,),
+            CustomTextField(hintText: 'confirm new password', labelText: "Confirm Password",icon:Icons.lock ,mycontrller: controler.resitpassword,isPhone: false,),
 const SizedBox(height: 50,),
     Custombuttons(titelbuttons: 'Check',onPressed: () {
       controler.gotoSuccessResetPassword();

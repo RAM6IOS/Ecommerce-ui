@@ -24,7 +24,7 @@ const ForgetPassword({ Key? key }) : super(key: key);
         children: [
        const CustomTitle(titel1: 'Check Email', titel2: 'please Enter Your Email Address To Recive A verification code',),
      const  SizedBox(height: 80,) ,
-     CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: controler.email,),
+     CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: controler.email,isPhone: false,),
     const SizedBox(height: 50,) ,
      Custombuttons(titelbuttons: 'Check',onPressed: () {
         controler.GotoCodeVerification();
