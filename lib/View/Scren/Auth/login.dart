@@ -27,13 +27,17 @@ const
         height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(20),
         alignment:Alignment.center,
+        child: Form(
+            // تفعيل التحقق التلقائي
+
+       key: signUpControler.formKey,
         child: Column(
           children: [
           const  CustomTitle(titel1: 'Wolcome Backe', titel2: 'Create an account to access exclusive features and content',),
             const SizedBox(height: 100,),
-             CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: signUpControler.email),
+             CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: signUpControler.email ,validator: ((value) => signUpControler.validateCustom(value, "email")),isPhone: false,),
              const SizedBox(height: 50,),
-           const  TextFieldPasword2(),
+           TextFieldPasword2(validator:((value) => signUpControler.validateCustom(value, "password")) ,),
             
   Flexible(
   flex: 1,
@@ -41,6 +45,7 @@ const
 ),
 const SizedBox(height: 50,),
     Custombuttons(titelbuttons: 'Log In',onPressed: () {
+      controller.gotohome();
     }, ),
     Customlink(titel1: 'Dont have an account? ', titel2: 'Sign Up',puch: (){
       Get.offAll(
@@ -49,7 +54,7 @@ const SizedBox(height: 50,),
   },),
  Spacer(),
                         ],
-        ),
+        ),)
       ),)
     );
   }

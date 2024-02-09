@@ -19,13 +19,15 @@ const NewPassword({ Key? key }) : super(key: key);
         height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(20),
         alignment:Alignment.center,
-        child: Column(
+        child: Form(
+          key: controler.formKey,
+          child:Column(
           children: [
          const   CustomTitle(titel1: ' Preview for Password', titel2: 'Please Enter new Password',),
            const  SizedBox(height: 100,),
-             CustomTextField(hintText: 'enter your Password', labelText: "New Password",icon:Icons.lock ,mycontrller: controler.newpassword,isPhone: false,),
+             CustomTextField(hintText: 'enter your Password', labelText: "New Password",icon:Icons.lock ,mycontrller: controler.newpassword,isPhone: false,validator: ((value)=> controler.validateCustom(value,"password")),),
             const SizedBox(height: 50,),
-            CustomTextField(hintText: 'confirm new password', labelText: "Confirm Password",icon:Icons.lock ,mycontrller: controler.resitpassword,isPhone: false,),
+            CustomTextField(hintText: 'confirm new password', labelText: "Confirm Password",icon:Icons.lock ,mycontrller: controler.resitpassword,isPhone: false,validator: ((value)=> controler.validateCustom(value, "password"))),
 const SizedBox(height: 50,),
     Custombuttons(titelbuttons: 'Check',onPressed: () {
       controler.gotoSuccessResetPassword();
@@ -34,6 +36,7 @@ const SizedBox(height: 50,),
  Spacer(),
                         ],
         ),
+          )
       ),
     );
   }
