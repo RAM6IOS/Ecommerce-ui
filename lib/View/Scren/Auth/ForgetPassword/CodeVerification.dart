@@ -43,13 +43,16 @@ const CodeVerification({ Key? key }) : super(key: key);
     onEditing: (bool value) {
      controler.Editing(value);
       if (!controler.onEditing) {
-        controler.gotoNewPassword();
+       // controler.gotoNewPassword();
         FocusScope.of(context).unfocus();
         }
     },
   ),
    const  SizedBox(height: 50,) ,
      Custombuttons(titelbuttons: 'Check',onPressed: () {
+      if (!controler.onEditing) {
+      controler.gotoNewPassword();
+      }
     }, ),
         ],
       ),

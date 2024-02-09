@@ -1,4 +1,3 @@
-import 'package:ecommerce_ui/View/Scren/Auth/SuccessSignUp.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTitle.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/custombuttons.dart';
 import 'package:ecommerce_ui/controler/Auth/CodeVerificationSign.dart';
@@ -54,9 +53,9 @@ const CodeVerificationSign({ Key? key }) : super(key: key);
   ),
    const  SizedBox(height: 50,) ,
      Custombuttons(titelbuttons: 'Check',onPressed: () {
+       if (!controler.onEditing) {
       controler.gotoNewPassword();
-
-
+       }
     }, ),
         ],
       ),

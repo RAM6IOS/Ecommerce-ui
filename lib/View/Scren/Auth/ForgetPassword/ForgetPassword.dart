@@ -20,17 +20,20 @@ const ForgetPassword({ Key? key }) : super(key: key);
          height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(20),
         alignment:Alignment.center,
-        child:Column(
+        child:Form(
+          key: controler.formKey,
+          child:Column(
         children: [
        const CustomTitle(titel1: 'Check Email', titel2: 'please Enter Your Email Address To Recive A verification code',),
      const  SizedBox(height: 80,) ,
-     CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: controler.email,isPhone: false,),
+     CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: controler.email,isPhone: false,validator: ((value) => controler.validateCustom(value, "email"))),
     const SizedBox(height: 50,) ,
      Custombuttons(titelbuttons: 'Check',onPressed: () {
         controler.GotoCodeVerification();
     }, ),
         ],
       ),
+        )
       ),
     );
       
