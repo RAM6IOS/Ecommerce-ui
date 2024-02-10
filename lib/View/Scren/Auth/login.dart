@@ -1,3 +1,4 @@
+import 'package:ecommerce_ui/Core/function/exitshowdialog.dart';
 import 'package:ecommerce_ui/View/Scren/Auth/SignUp.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTextField.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTitle.dart';
@@ -22,14 +23,14 @@ const
         backgroundColor:Colors.white,
         title:Text("Log in"),
       ),
-      body: SingleChildScrollView(
+      body: WillPopScope(
+         onWillPop: exitshowdialog,
+        child:SingleChildScrollView(
        child: Container(
         height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(20),
         alignment:Alignment.center,
         child: Form(
-            // تفعيل التحقق التلقائي
-
        key: signUpControler.formKey,
         child: Column(
           children: [
@@ -37,8 +38,7 @@ const
             const SizedBox(height: 100,),
              CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email ,mycontrller: signUpControler.email ,validator: ((value) => signUpControler.validateCustom(value, "email")),isPhone: false,),
              const SizedBox(height: 50,),
-           TextFieldPasword2(validator:((value) => signUpControler.validateCustom(value, "password")) ,),
-            
+           TextFieldPasword2(validator:((value) => signUpControler.validateCustom(value, "password")) ,),  
   Flexible(
   flex: 1,
   child: Showpassword()
@@ -56,6 +56,9 @@ const SizedBox(height: 50,),
                         ],
         ),)
       ),)
+
+
+       )
     );
   }
 }

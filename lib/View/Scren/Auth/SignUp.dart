@@ -1,3 +1,4 @@
+import 'package:ecommerce_ui/Core/function/exitshowdialog.dart';
 import 'package:ecommerce_ui/View/Scren/Auth/login.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTextField.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTitle.dart';
@@ -23,7 +24,10 @@ class _SignUpState extends State<SignUp> {
         centerTitle:true,
         title:Text("Sign Up"),
       ),
-      body: SingleChildScrollView(
+      body: WillPopScope(
+        
+        onWillPop: exitshowdialog,
+        child: SingleChildScrollView(
        child: Container(
         height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.all(20),
@@ -60,7 +64,7 @@ const SizedBox(height: 50,),
  Spacer()
                 ],
         ),
-      ),))
+      ),)))
     );
     
   }
