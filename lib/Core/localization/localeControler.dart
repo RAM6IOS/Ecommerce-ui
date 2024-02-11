@@ -1,9 +1,14 @@
 
+
+
+
 import 'package:ecommerce_ui/Core/services/OnboardingServices.dart';
 import 'package:ecommerce_ui/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// ignore: depend_on_referenced_packages
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 class MyLocaleController extends GetxController {
 
@@ -16,31 +21,33 @@ class MyLocaleController extends GetxController {
   void onInit() {
     super.onInit();
     _loadSavedLang();
-    _showDialog();
+    showDialo();
   print(showDialog);
-    if (showDialog == false){
-      Future.delayed(const Duration(seconds: 2), () {
-      showLanguageDialog();
-    });
-    }
     
   }
-
-  void _showDialog(){
-    if (services.sharedPreferences.getBool("showDialog") != null){
-      showDialog = true ;
-    } else {
-      showDialog = false ;
-    }
-
+  
+   void showDialo() async{
+   if (services.sharedPreferences.getBool("showDialog") != null) {
+    showDialog = services.sharedPreferences.getBool("showDialog")!;
+    if (!showDialog) {
+      Future.delayed(const Duration(seconds: 2), () {
+      LanguageDialog();
+    });
+       
+    } 
   }
 
+  }
+  void showDialoglang() {
+    showDialog = true ;
+  services.sharedPreferences.setBool("showDialog", showDialog);
+  print(services.sharedPreferences.getBool("showDialog"));
+    update();
+  }
   void _loadSavedLang() {
     String? savedLang = services.sharedPreferences.getString("lang");
-    //bool? savDialog = services.sharedPreferences.getBool("showDialog");
     if (savedLang != null) {
       intiaILang = Locale(savedLang);
-      //showDialog = savDialog!;
     } else {
       intiaILang = Get.deviceLocale!;
     }
@@ -51,13 +58,11 @@ class MyLocaleController extends GetxController {
     Locale locale = Locale(codelang);
     services.sharedPreferences.setString("lang", codelang);
 
-    
     Get.updateLocale(locale);
+    update();
   }
   
-
-
-  showLanguageDialog() {
+  LanguageDialog() {
     Get.defaultDialog(
        backgroundColor:Color.fromARGB(255, 252, 248, 248),
       title: "2".tr ,
@@ -67,8 +72,8 @@ class MyLocaleController extends GetxController {
           ElevatedButton(
             onPressed: () {
               changelang('ar');
-              showDialog = true ;
-              services.sharedPreferences.getBool("showDialog");
+             showDialoglang();
+             // services.sharedPreferences.getBool("showDialog");
               print(showDialog);
               // قم بتغيير اللغة إلى العربية
               Get.back();
@@ -82,8 +87,7 @@ class MyLocaleController extends GetxController {
           ElevatedButton(
             onPressed: () {
                changelang('en');
-                 showDialog = true ;
-              services.sharedPreferences.getBool("showDialog");
+                showDialoglang();
                 print(showDialog);
               // قم بتغيير اللغة إلى الإنجليزية
               Get.back();
@@ -99,4 +103,6 @@ class MyLocaleController extends GetxController {
       )
     );
   }
+
+ 
 }
