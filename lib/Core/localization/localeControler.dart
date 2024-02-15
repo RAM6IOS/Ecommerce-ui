@@ -4,10 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MyLocaleController extends GetxController {
-
    late Locale intiaILang;
    bool showDialog = false;
-
    MyServices services = Get.find();
 
   @override
@@ -15,25 +13,29 @@ class MyLocaleController extends GetxController {
     super.onInit();
     _loadSavedLang();
     showDialo();
+   if (showDialog == false) {
+      Future.delayed(const Duration(seconds: 2), () {
+      LanguageDialog();
+    });
+       
+    } 
   print(showDialog);
-    
   }
   
    void showDialo() async{
    if (services.sharedPreferences.getBool("showDialog") != null) {
-    showDialog = services.sharedPreferences.getBool("showDialog")!;
-    if (!showDialog) {
+    showDialog  = services.sharedPreferences.getBool("showDialog")!;
+    if (showDialog == false) {
       Future.delayed(const Duration(seconds: 2), () {
       LanguageDialog();
     });
        
     } 
   }
-
   }
   void showDialoglang() {
     showDialog = true ;
-  services.sharedPreferences.setBool("showDialog", showDialog);
+  services.sharedPreferences.setBool("showDialog", true);
   print(services.sharedPreferences.getBool("showDialog"));
     update();
   }
@@ -95,7 +97,5 @@ class MyLocaleController extends GetxController {
       ) ,
       )
     );
-  }
-
- 
+  } 
 }
