@@ -1,4 +1,5 @@
 import 'package:ecommerce_ui/Core/function/exitshowdialog.dart';
+import 'package:ecommerce_ui/Core/services/OnboardingServices.dart';
 import 'package:ecommerce_ui/View/Scren/Auth/login.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTextField.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTitle.dart';
@@ -19,13 +20,13 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     SignUpControler controler = Get.put(SignUpControler());
+     MyServices settingServices2 = Get.put(MyServices());
     return Scaffold(
       appBar: AppBar(
         centerTitle:true,
         title:Text("Sign Up"),
       ),
       body: WillPopScope(
-        
         onWillPop: exitshowdialog,
         child: SingleChildScrollView(
        child: Container(
@@ -46,7 +47,6 @@ class _SignUpState extends State<SignUp> {
               CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email,mycontrller: controler.email ,isPhone: false,validator: ((value) => controler.validateCustom(value ,"email"))),
             const  SizedBox(height: 30,),
            TextFieldPaswordSign(mycontrller: controler.password ,validator:((value) => controler.validateCustom(value ,"password"))),
-     
  const Flexible(
   flex: 1,
   child: ShowpasswordSign(),
@@ -54,6 +54,8 @@ class _SignUpState extends State<SignUp> {
 const SizedBox(height: 50,),
     Custombuttons(titelbuttons: 'Sign Up',onPressed: () {
       controler.gotoCheckEmail();
+      settingServices2.sharedPreferences.clear();
+              Get.offAllNamed('/');
 
     }, ),
   Customlink(titel1: 'I already have an account! ', titel2: 'Log In',puch: (){
