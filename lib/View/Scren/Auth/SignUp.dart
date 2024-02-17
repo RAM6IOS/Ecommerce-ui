@@ -1,5 +1,4 @@
 import 'package:ecommerce_ui/Core/function/exitshowdialog.dart';
-import 'package:ecommerce_ui/Core/services/OnboardingServices.dart';
 import 'package:ecommerce_ui/View/Scren/Auth/login.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTextField.dart';
 import 'package:ecommerce_ui/View/Widget/Auth/CustomTitle.dart';
@@ -20,7 +19,6 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     SignUpControler controler = Get.put(SignUpControler());
-     MyServices settingServices2 = Get.put(MyServices());
     return Scaffold(
       appBar: AppBar(
         centerTitle:true,
@@ -38,15 +36,32 @@ class _SignUpState extends State<SignUp> {
        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-             const CustomTitle(titel1: 'YanFix', titel2: 'Create an account to access exclusive features and content',),
+             const CustomTitle(titel1: 'YanFix', 
+             titel2: 'Create an account to access exclusive features and content',),
              const SizedBox(height: 80,),
-             CustomTextField(hintText: 'enter your user name', labelText: "User Name",icon:Icons.person ,mycontrller: controler.username,isPhone: false,validator: ((value) => controler.validateCustom(value ,"Name")),),
+             CustomTextField(hintText: 'enter your user name',
+              labelText: "User Name",
+              icon:Icons.person ,mycontrller:
+               controler.username,
+               isPhone: false,
+               validator: ((value) => controler.validateCustom(value ,"Name")),),
             const  SizedBox(height: 30,),
-              CustomTextField(hintText: 'enter your Phone namber', labelText: "Phone Namber",icon:Icons.phone ,mycontrller: controler.phone,isPhone: true,validator: ((value) => controler.validateCustom(value ,"Phone namber"))),
+              CustomTextField(hintText: 'enter your Phone namber', 
+              labelText: "Phone Namber",
+              icon:Icons.phone ,
+              mycontrller: controler.phone,
+              isPhone: true,
+              validator: ((value) => controler.validateCustom(value ,"Phone namber"))),
             const  SizedBox(height: 30,),
-              CustomTextField(hintText: 'enter your Email', labelText: "Email",icon:Icons.email,mycontrller: controler.email ,isPhone: false,validator: ((value) => controler.validateCustom(value ,"email"))),
+              CustomTextField(hintText: 'enter your Email',
+               labelText: "Email",
+               icon:Icons.email,
+               mycontrller: controler.email ,
+               isPhone: false,
+               validator: ((value) => controler.validateCustom(value ,"email"))),
             const  SizedBox(height: 30,),
-           TextFieldPaswordSign(mycontrller: controler.password ,validator:((value) => controler.validateCustom(value ,"password"))),
+           TextFieldPaswordSign(mycontrller: controler.password ,
+           validator:((value) => controler.validateCustom(value ,"password"))),
  const Flexible(
   flex: 1,
   child: ShowpasswordSign(),
@@ -54,11 +69,10 @@ class _SignUpState extends State<SignUp> {
 const SizedBox(height: 50,),
     Custombuttons(titelbuttons: 'Sign Up',onPressed: () {
       controler.gotoCheckEmail();
-      settingServices2.sharedPreferences.clear();
-              Get.offAllNamed('/');
-
     }, ),
-  Customlink(titel1: 'I already have an account! ', titel2: 'Log In',puch: (){
+  Customlink(
+  titel1: 'I already have an account! ',
+  titel2: 'Log In',puch: (){
     Get.offAll(
  () => Login(),
 );
