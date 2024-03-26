@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:ecommerce_ui/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,24 +11,11 @@ class LoginControler extends GetxController {
   late TextEditingController password;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String? validateEmail(String? value) {
-  if (value == null || value.isEmpty) {
-    return 'Please enter your Email';
-  } else if (value.length < 4) {
-    return 'Please enter a valid email with at least 5 characters';
-  } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$')
-          .hasMatch(value)) {
-    return 'Please enter a valid email address';
-  }
-  return null;
+
+void gotohome(){
+if (formKey.currentState != null && formKey.currentState!.validate()) {
+  Get.offAll(()=> HomePage());
 }
-String? validatepasswordl(String? value) {
- if (value == null || value.isEmpty) {
-    return 'Please enter your password';
-  } else if (value.length < 6) {
-    return 'Please enter a valid password with at least 6 characters';
-  }
-  return null;
 }
   @override
   void onInit() {
